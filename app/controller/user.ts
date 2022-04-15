@@ -3,7 +3,10 @@ import { Controller } from 'egg';
 export default class UserController extends Controller {
   public async login() {
     const { ctx } = this;
-    const user = await ctx.service.user.handle('get', { phone: '13386126957', password: 'zm13qp79' });
+    const user = await ctx.service.user.handle('get', {
+      phone: ctx.request.body.phone,
+      password: ctx.request.body.password,
+    });
     if (user) {
       ctx.body = {
         code: 200,
@@ -18,8 +21,9 @@ export default class UserController extends Controller {
   }
   public async registry() {
     const { ctx } = this;
-    console.log('----registry----', ctx.request.body.phone);
-    const isExit = await ctx.service.user.handle('get', { phone: ctx.request.body.phone });
+    const isExit = await ctx.service.user.handle('get', {
+      phone: ctx.request.body.phone,
+    });
     if (isExit) {
       ctx.body = {
         code: 200,
@@ -38,6 +42,13 @@ export default class UserController extends Controller {
     ctx.body = {
       code: 200,
       msg: '修改成功',
+    };
+  }
+  public async deleteUser() {
+    const { ctx } = this;
+    ctx.body = {
+      code: 200,
+      msg: '注销成功',
     };
   }
 }

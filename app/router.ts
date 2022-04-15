@@ -8,4 +8,5 @@ export default (app: Application) => {
   router.post('/user/login', controller.user.login);
   router.post('/user/registry', controller.user.registry);
   router.post('/user/changePassword', controller.user.changePassword);
+  router.delete('/user/delete', controller.user.deleteUser);
 };

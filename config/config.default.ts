@@ -18,14 +18,6 @@ export default (appInfo: EggAppInfo) => {
     },
   };
 
-  config.security = {
-    csrf: {
-      enable: false,
-      ignoreJSON: true,
-    },
-    domainWhiteList: [ '*' ],
-  };
-
   const bizConfig = {};
 
   return {
