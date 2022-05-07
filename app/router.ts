@@ -5,6 +5,7 @@ export default (app: Application) => {
 
   router.get('/', controller.home.index);
 
+  router.get('/user/query', controller.user.query);
   router.post('/user/login', controller.user.login);
   router.post('/user/registry', controller.user.registry);
   router.post('/user/changePassword', controller.user.changePassword);

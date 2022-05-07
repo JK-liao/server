@@ -1,6 +1,24 @@
 import { Controller } from 'egg';
 
 export default class UserController extends Controller {
+  public async query() {
+    const { ctx } = this;
+    const user = await ctx.service.user.handle('get', {
+      phone: ctx.query.phone,
+    });
+    if (user) {
+      ctx.body = {
+        code: 200,
+        msg: '查询成功',
+        data: user.password,
+      };
+    } else {
+      ctx.body = {
+        code: 200,
+        msg: '账号不存在',
+      };
+    }
+  }
   public async login() {
     const { ctx } = this;
     const user = await ctx.service.user.handle('get', {

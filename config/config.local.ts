@@ -10,6 +10,10 @@ export default () => {
     },
     domainWhiteList: [ '*' ],
   };
+  config.cors = {
+    origin: '*',
+    allowMethods: 'GET,POST,DELETE,PUT,HEAD,PATCH,OPTIONS',
+  };
 
   return config;
 };
